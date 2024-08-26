@@ -1,0 +1,90 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+let mapleader = " "
+set scrolloff=2
+
+" Do incremental searching.
+set incsearch
+set shomode
+set nu
+set relativenumber
+set ignorecase
+set smartcase
+set clipboard+=unnamed
+set ideajoin
+set ideamarks
+set lazyredraw
+set ttyfast
+set hlsearch
+set ttimeoutlen=1
+set visualbell
+set surround
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+inoremap jj <Esc>
+nnoremap X "_x
+vnoremap x "_x
+noremap <cr> i<cr><esc>
+inoremap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-b> <left>
+inoremap <c-f> <right>
+inoremap <c-n> <down>
+inoremap <c-p> <up>
+inoremap <c-d> <del>
+inoremap <c-h> <bs>
+inoremap <c-k> <c-o>D<right>
+inoremap <c-u> <c-o>u
+map s <Plug>(easymotion-s)
+nnoremap <c-o> :<c-u>action Back<cr>
+nnoremap <c-i> :<c-u>action Forward<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gr :action FindUsages<cr>
+nnoremap rf :action RecentFiles<cr>
+
+nnoremap L $
+nnoremap H ^
+nnoremap J <c-d>
+nnoremap K <c-u>
+nnoremap <tab> %
+vnoremap <tab> %
+
+map ]b <Action>(GotoNextBookmark)
+map [b <Action>(GotoPreviousBookmark)
+nmap u <Action>($Undo)
+
+""" leader keymap
+map <leader>b <Action>(ToggleBookmark)
+map <leader>d <Action>(ShowHoverInfo)
+map <leader>a <Action>(ShowIntentionActions)
+map <leader>f viw<Action>(FindInPath)<esc>
+nmap <leader>c <Action>(CloseContent)
+nmap <leader>e <Action>(ActivateProjectToolWindow)
+nmap <leader>lr <Action>(RenameElement)
+nmap <leader>th <Action>(ActivateTerminalToolWindow)
+nmap <leader>q <Action>(HideAllWindows)
+nmap <leader>fs <Action>(FileStructurePopup)
